@@ -1,24 +1,37 @@
+"""
+Object wrapper for dictionaries. Replaces item notation with attribute
+notations. (a['foo'] -> a.foo)
+
+Note, the wrapper obscures all standard dictionary methods.
+
+For historical purposes it is worth noting that there is no effective way to
+include standard dictionary methods nor maintain internal dictionaries since
+there is no clean way to set any attributes on the object. At best, we might
+make future improvements by fully inverting the attribute notation of dicts
+with the item notation, thus allowing things like "x['keys']" to replace
+dict.keys.
+
+Heavily inspired by: http://stackoverflow.com/a/6573827/577199
+"""
 from collections import Container, Sized, Iterable
 
 
-class Resource(Container, Sized, Iterable):
+class ObjectifiedDict(Container, Sized, Iterable):
     """Wrapper for a dict to give it an object interface.
 
-    Does not permit of any dict instance methods.
+    Does not include access to any dict instance methods.
 
     >>> d = {'foo': 1, 'bar': {'a': 3, 'b': 4}}
-    >>> MyResource = type('MyResource', (Resource,), {'_load': lambda: 0})
-    >>> o = MyResource(d)
+    >>> ODict = type('ODict', (ObjectifiedDict,), {'__missing__': lambda: 0})
+    >>> o = ODict(d)
     >>> o
-    {'foo' : 1, 'bar' : {'a' : 3, 'b' : 4}}
+    {'foo': 1, 'bar': {'a': 3, 'b': 4}}
     >>> o.foo
     1
     >>> o["foo"]
     1
     >>> o.bar.a
     3
-
-    Heavily inspired by: http://stackoverflow.com/a/6573827/577199
     """
     def __init__(self, mapping=None, **kwargs):
         if mapping:
@@ -42,7 +55,6 @@ class Resource(Container, Sized, Iterable):
         return self[key]
 
     def __missing__(self, key):
-        """Get a missing attribute."""
         raise KeyError(key)
 
     def __getitem__(self, key):

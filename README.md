@@ -16,6 +16,21 @@ An AutovivifiedDict automatically creates new AutovividedDicts if user looks for
 {1: {2: {3: 4}}
 ```
 
+ObjectifiedDict
+---------------
+
+An ObjectifiedDict provides a wrapper for dictionaries that allows interaction through object notation. Though not really a tree, an ObjectifiedDict is frequently useful when dealing with trees.
+
+```python
+>>> import trees
+>>> d = {'foo': 1, 'bar': True}
+>>> od = trees.ObjectifiedDict(d)
+>>> od.d
+1
+>>> od.bar
+True
+```
+
 heap
 ----
 
