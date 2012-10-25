@@ -17,7 +17,7 @@ setup(
     author_email="cbautista2010@gmail.com",
     url="https://github.com/Ceasar/trees",
     description="Collection of various tree-like data structures",
-    keywords=['tree', 'data'],
+    keywords=['tree', 'data', 'heap', 'autovivify'],
     packages=['trees'],
     classifiers=[
         "Intended Audience :: Developers",
@@ -36,5 +36,6 @@ setup(
 
     Includes:
     -   AutovivifiedDict
+    -   ObjectifiedDict
     -   Heap (heapq wrapper)
      """)
