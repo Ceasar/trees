@@ -22,8 +22,8 @@ class ObjectifiedDict(Container, Sized, Iterable):
     Does not include access to any dict instance methods.
 
     >>> d = {'foo': 1, 'bar': {'a': 3, 'b': 4}}
-    >>> ODict = type('ODict', (ObjectifiedDict,), {'__missing__': lambda: 0})
-    >>> o = ODict(d)
+    >>> OD = type('OD', (ObjectifiedDict,), {'__missing__': lambda s, k: 0})
+    >>> o = OD(d)
     >>> o
     {'foo': 1, 'bar': {'a': 3, 'b': 4}}
     >>> o.foo
@@ -32,6 +32,11 @@ class ObjectifiedDict(Container, Sized, Iterable):
     1
     >>> o.bar.a
     3
+    >>> o.foobar
+    0
+    >>> o.barfoo = 1
+    >>> o.barfoo
+    1
     """
     def __init__(self, mapping=None, **kwargs):
         if mapping:
@@ -39,6 +44,9 @@ class ObjectifiedDict(Container, Sized, Iterable):
                 self[k] = v
         for k, v in kwargs:
             self[k] = v
+
+    def __setattr__(self, k, v):
+        self[k] = v
 
     def __setitem__(self, k, v):
         """Update the object with new data."""
