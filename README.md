@@ -23,17 +23,19 @@ An ObjectifiedDict provides a wrapper for dictionaries that allows interaction t
 
 ```python
 >>> import trees
->>> d = {'foo': 1, 'bar': True}
+>>> d = {'foo': 1, 'bar': {'red': True}}
 >>> od = trees.ObjectifiedDict(d)
 >>> od
-{'foo': 1, 'bar': True}
+{'foo': 1, 'bar': {'red': True}}
 >>> od["foo"]
 1
 >>> od.foo
 1
+>>> od.bar.red
+True
 >>> od.car = 1
 >>> od
-{'foo': 1, 'bar': True, 'car': 1}
+{'foo': 1, 'bar': {'red': True}, 'car': 1}
 >>> od.car
 1
 ```
