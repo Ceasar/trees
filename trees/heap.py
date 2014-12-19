@@ -46,21 +46,15 @@ class heap(object):
         '''Pop and return the smallest item from the heap, maintaining the heap
         invariant. If the heap is empty, IndexError is raised.
         '''
-        try:
-            return heapq.heappop(self._items)
-        except IndexError as e:
-            raise e
+        
+        return heapq.heappop(self._items)
 
     def push(self, item):
         '''Push the value item onto the heap, maintaining the heap invariant.
         If the item is not hashable, a TypeError is raised.
         '''
-        try:
-            hash(item)
-        except TypeError as e:
-            raise e
-        else:
-            heapq.heappush(self._items, item)
+        hash(item)
+        heapq.heappush(self._items, item)
 
     def __len__(self):
         return len(self._items)
