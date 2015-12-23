@@ -11,7 +11,7 @@ class heap(object):
     A heap can be used as priority queue by pushing tuples onto the heap.
 
     >>> import trees
-    >>> h = trees.heap()
+    >>> h = trees.heap.heap()
     >>> h.push(1)
     >>> h.push(3)
     >>> h.push(2)
