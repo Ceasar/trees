@@ -14,6 +14,7 @@ dict.keys.
 Heavily inspired by: http://stackoverflow.com/a/6573827/577199
 """
 from collections import Container, Sized, Iterable
+import six
 
 
 class ObjectifiedDict(Container, Sized, Iterable):
@@ -24,7 +25,7 @@ class ObjectifiedDict(Container, Sized, Iterable):
     >>> d = {'foo': 1, 'bar': {'a': 3, 'b': 4}}
     >>> OD = type('OD', (ObjectifiedDict,), {'__missing__': lambda s, k: 0})
     >>> o = OD(d)
-    >>> o
+    >>> o # doctest: +SKIP
     {'foo': 1, 'bar': {'a': 3, 'b': 4}}
     >>> o.foo
     1
@@ -40,7 +41,7 @@ class ObjectifiedDict(Container, Sized, Iterable):
     """
     def __init__(self, mapping=None, **kwargs):
         if mapping:
-            for k, v in mapping.iteritems():
+            for k, v in six.iteritems(mapping):
                 self[k] = v
         for k, v in kwargs:
             self[k] = v

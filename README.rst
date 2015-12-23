@@ -4,8 +4,8 @@ trees
 .. image:: https://badge.fury.io/py/trees.png
     :target: http://badge.fury.io/py/trees
 
-.. image:: https://pypip.in/d/trees/badge.png
-        :target: https://crate.io/packages/trees/
+.. image:: https://travis-ci.org/adelq/trees.svg
+    :target: https://travis-ci.org/adelq/trees
 
 Collection of various tree data structures.
 
