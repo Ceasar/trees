@@ -4,7 +4,6 @@ Convenience wrapper for the functional heapq library.
 import heapq
 
 
-# TODO: add a __contains__ method
 class heap(object):
     '''A tree-based data structure that satisfies the heap property.
 
@@ -68,6 +67,9 @@ class heap(object):
     def __iter__(self):
         while len(self) > 0:
             yield self.pop()
+
+    def __contains__(self, item):
+        return item in self._items
 
 
 if __name__ == "__main__":
