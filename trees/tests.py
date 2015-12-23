@@ -1,5 +1,5 @@
-from autovivify import AutovivifiedDict
-from objectify import ObjectifiedDict
+from .autovivify import AutovivifiedDict
+from .objectify import ObjectifiedDict
 
 
 def test_objectified_getattr():
