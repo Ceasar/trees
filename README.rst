@@ -4,9 +4,6 @@ trees
 .. image:: https://badge.fury.io/py/trees.png
     :target: http://badge.fury.io/py/trees
 
-.. image:: https://pypip.in/d/trees/badge.png
-        :target: https://crate.io/packages/trees/
-
 Collection of various tree data structures.
 
 Installation
